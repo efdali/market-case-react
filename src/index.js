@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 import store from 'store/store';
 import { createGlobalStyle } from 'styled-components';
@@ -10,7 +9,6 @@ const GlobalStyle = createGlobalStyle`
   @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
   @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
   :root{
-
     --container-width:1230px;
 
     --color-primary: #1EA4CE;
@@ -22,8 +20,8 @@ const GlobalStyle = createGlobalStyle`
     --color-black: #191919;
     --color-shadow: rgba(93, 62, 188, 0.04);
 
-    --color-item: #525252;
-    --color-itemSecondary: #A8A8A8;
+    --color-filterItem: #525252;
+    --color-filterItemSecondary: #A8A8A8;
 
     --color-radio-border:#DFDEE2;
 
@@ -76,8 +74,3 @@ ReactDOM.render(
   </Provider>,
   document.getElementById('root'),
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();

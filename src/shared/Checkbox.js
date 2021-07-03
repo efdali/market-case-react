@@ -6,7 +6,7 @@ const Label = styled(Flex)`
   font-size: 14px;
   line-height: 18px;
   letter-spacing: 0.16px;
-  color: var(--color-item);
+  color: var(--color-filterItem);
   align-items: center;
   user-select: none;
 
@@ -15,7 +15,7 @@ const Label = styled(Flex)`
   }
 
   span.count {
-    color: var(--color-itemSecondary);
+    color: var(--color-filterItemSecondary);
     margin-left: 4px;
   }
 `;

@@ -16,7 +16,7 @@ const Input = styled.input.attrs((props) => ({
   letter-spacing: 0.15px;
 
   &::placeholder {
-    color: var(--color-itemSecondary);
+    color: var(--color-filterItemSecondary);
   }
 `;
 

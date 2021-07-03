@@ -1,4 +1,5 @@
 import { useDispatch } from 'react-redux';
+import Flex from 'shared/Flex';
 import {
   ProductItemContainer,
   ProductTitle,
@@ -19,7 +20,7 @@ export default function BasketProductItem({ item }) {
         <ProductTitle>{item.name}</ProductTitle>
         <span className="price">₺{item.price}</span>
       </div>
-      <div>
+      <Flex>
         <QuantityButton
           onClick={() => dispatch(decreaseQuantity(item.slug))}
         >
@@ -31,7 +32,7 @@ export default function BasketProductItem({ item }) {
         >
           +
         </QuantityButton>
-      </div>
+      </Flex>
     </ProductItemContainer>
   );
 }

@@ -44,7 +44,7 @@ function Pagination() {
         disabled={page <= 1}
         onClick={(e) => {
           e.preventDefault();
-          setQuery('page', page - 1);
+          setQuery({ page: page - 1 });
         }}
       >
         <PrevArrowSvg />
@@ -57,7 +57,7 @@ function Pagination() {
             key={'left-paginate-' + range}
             onClick={(e) => {
               e.preventDefault();
-              setQuery('page', range);
+              setQuery({ page: range });
             }}
           >
             {range}
@@ -68,7 +68,7 @@ function Pagination() {
         disabled={page >= totalPage}
         onClick={(e) => {
           e.preventDefault();
-          setQuery('page', page + 1);
+          setQuery({ page: page + 1 });
         }}
       >
         Next

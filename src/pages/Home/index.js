@@ -32,6 +32,10 @@ export default function HomePage() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [window.location.search]);
 
+  const itemTypeChangeHandler = (item) => {
+    setQuery({ itemType: item });
+  };
+
   return (
     <Wrapper as={'main'}>
       <FilterAside />
@@ -52,9 +56,7 @@ export default function HomePage() {
             <TabButton
               key={item + '-type'}
               active={itemType === item}
-              onClick={() => {
-                setQuery('itemType', item);
-              }}
+              onClick={() => itemTypeChangeHandler(item)}
             >
               {item}
             </TabButton>

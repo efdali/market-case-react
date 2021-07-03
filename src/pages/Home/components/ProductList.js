@@ -2,7 +2,10 @@ import React from 'react';
 // eslint-disable-next-line no-unused-vars
 import styled from 'styled-components/macro';
 import { useDispatch, useSelector } from 'react-redux';
-import { productsSelector } from 'store/slices/productSlices';
+import {
+  productsSelector,
+  loadingSelector,
+} from 'store/slices/productSlices';
 import { addProduct } from 'store/slices/basketSlices';
 import Button from 'shared/Button';
 import Loading from 'shared/Loading';
@@ -16,7 +19,7 @@ import {
 
 function ProductList() {
   const dispatch = useDispatch();
-  const { isLoading } = useSelector((state) => state.products);
+  const isLoading = useSelector(loadingSelector);
   const products = useSelector(productsSelector);
 
   if (isLoading) {
@@ -24,7 +27,7 @@ function ProductList() {
   }
 
   if (products.length === 0) {
-    return <p>No product</p>;
+    return <p>No products were found matching your search.</p>;
   }
 
   return (

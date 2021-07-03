@@ -14,7 +14,7 @@ function Basket() {
     <Frame>
       <FrameInner>
         {items.length === 0 ? (
-          <p>No product</p>
+          <p>No product in basket.</p>
         ) : (
           items.map((item) => (
             <BasketProductItem key={item.slug} item={item} />

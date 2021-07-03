@@ -23,10 +23,6 @@ const FilterArea = styled.aside`
   position: sticky;
   top: 80px;
 
-  & > *:not(:last-child) {
-    margin-bottom: 24px;
-  }
-
   @media screen and (max-width: 767px) {
     position: static;
   }
@@ -43,6 +39,7 @@ const MobileAccordionTitle = styled.div`
   margin-bottom: 22px;
   display: none;
   user-select: none;
+  cursor: pointer;
   @media screen and (max-width: 767px) {
     display: block;
     position: relative;
@@ -69,11 +66,17 @@ const MobileAccordionTitle = styled.div`
 `;
 const MobileAccordionContent = styled.div`
   display: block;
+  transition: max-height 0.5s;
+  will-change: max-height;
   @media screen and (max-width: 767px) {
-    display: none;
     &.active {
-      display: block;
+      max-height: none;
     }
+    max-height: 0;
+    overflow: hidden;
+  }
+  & > *:not(:last-child) {
+    margin-bottom: 24px;
   }
 `;
 

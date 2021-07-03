@@ -60,7 +60,7 @@ function FilterAside() {
               value={sort.value}
               checked={sortValue === sort.value}
               onChange={({ target }) => {
-                setQuery('sort', target.value);
+                setQuery({ sort: target.value });
               }}
               radio
             >

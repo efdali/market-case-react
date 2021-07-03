@@ -37,7 +37,7 @@ function FilterCard({
       brands = brands.filter((string) => string !== target.value);
     }
 
-    setQuery(type, brands);
+    setQuery({ [type]: brands, page: 1 });
   };
 
   return (
@@ -56,7 +56,7 @@ function FilterCard({
             checked={filterData.length === 0}
             onChange={({ target }) => {
               if (target.checked) {
-                setQuery(type, []);
+                setQuery({ [type]: [], page: 1 });
               } else {
                 return;
               }

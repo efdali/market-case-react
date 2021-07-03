@@ -1,24 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Suspense, lazy } from 'react';
+import { ToastContainer } from 'react-toastify';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from 'react-router-dom';
+import Header from 'shared/Header';
+import Footer from 'shared/Footer';
+import Loading from 'shared/Loading';
+
+const HomePage = lazy(() => import('pages/Home'));
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Header />
+      <Suspense fallback={<Loading full />}>
+        <Switch>
+          <Route exact path="/" component={HomePage} />
+        </Switch>
+      </Suspense>
+      <Footer />
+      <ToastContainer autoClose={5000} />
+    </Router>
   );
 }
 

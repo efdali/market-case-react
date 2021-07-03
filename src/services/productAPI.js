@@ -15,7 +15,8 @@ const productsAPI = {
     }
 
     if (tagFilters.length > 0) {
-      filterString += '&tags[]=' + tagFilters.join('&tags[]=');
+      filterString +=
+        '&tags_like[]=' + tagFilters.join('&tags_like[]=');
     }
     const response = await fetch(
       `${process.env.REACT_APP_API_BASE_URL}/items?_page=${page}&_limit=${PRODUCTS_PER_PAGE}&_sort=${sortValue}&_order=${sortType}&itemType=${itemType}${filterString}`,

@@ -1,26 +1,24 @@
-import { useMemo } from 'react';
 import qs from 'qs';
-import { useHistory } from 'react-router-dom';
+import { history } from 'App';
 
-export default function useQuery() {
-  const history = useHistory();
+function useQuery() {
+  const query = qs.parse(history.location.search, {
+    ignoreQueryPrefix: true,
+  });
 
-  return useMemo(() => {
-    return {
-      query: qs.parse(history.location.search, {
-        ignoreQueryPrefix: true,
-      }),
-      setQuery(name, value) {
-        history.push({
-          search: qs.stringify(
-            {
-              ...this.query,
-              [name]: value,
-            },
-            { arrayFormat: 'brackets', encode: false },
-          ),
-        });
-      },
-    };
-  }, [history]);
+  function setQuery(name, value) {
+    history.push({
+      search: qs.stringify(
+        {
+          ...query,
+          [name]: value,
+        },
+        { arrayFormat: 'brackets', encode: false },
+      ),
+    });
+  }
+
+  return { query, setQuery };
 }
+
+export default useQuery;

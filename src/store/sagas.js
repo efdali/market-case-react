@@ -16,7 +16,6 @@ import {
   select,
   call,
   takeEvery,
-  delay,
 } from 'redux-saga/effects';
 import companiesAPI from 'services/companiesAPI';
 import tagsAPI from 'services/tagsAPI';

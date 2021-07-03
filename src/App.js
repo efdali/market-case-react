@@ -1,19 +1,18 @@
 import React, { Suspense, lazy } from 'react';
 import { ToastContainer } from 'react-toastify';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-} from 'react-router-dom';
+import { createBrowserHistory } from 'history';
+import { Router, Switch, Route } from 'react-router-dom';
 import Header from 'shared/Header';
 import Footer from 'shared/Footer';
 import Loading from 'shared/Loading';
+
+export const history = createBrowserHistory();
 
 const HomePage = lazy(() => import('pages/Home'));
 
 function App() {
   return (
-    <Router>
+    <Router history={history}>
       <Header />
       <Suspense fallback={<Loading full />}>
         <Switch>

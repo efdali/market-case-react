@@ -10,6 +10,9 @@ export const companiesSlice = createSlice({
     companiesRequested(state) {
       state.isLoading = true;
     },
+    companiesFailed(state) {
+      state.isLoading = false;
+    },
     companiesReceived(state, action) {
       state.isLoading = false;
       state.companies = action.payload;
@@ -17,8 +20,11 @@ export const companiesSlice = createSlice({
   },
 });
 
-export const { companiesRequested, companiesReceived } =
-  companiesSlice.actions;
+export const {
+  companiesRequested,
+  companiesReceived,
+  companiesFailed,
+} = companiesSlice.actions;
 
 export const companiesSelector = (state) => state.companies;
 

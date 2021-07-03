@@ -46,21 +46,13 @@ export const basketSlice = createSlice({
         if (state.items[productIndex].quantity > 1) {
           state.items[productIndex].quantity -= 1;
         } else {
-          console.log('else girdi');
           state.items.splice(productIndex, 1);
         }
       }
     },
-    // decrement: (state) => {
-    //   state.value -= 1;
-    // },
-    // incrementByAmount: (state, action) => {
-    //   state.value += action.payload;
-    // },
   },
 });
 
-// Action creators are generated for each case reducer function
 export const {
   addProduct,
   removeProduct,

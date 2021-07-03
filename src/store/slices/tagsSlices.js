@@ -14,10 +14,14 @@ export const tagsSlice = createSlice({
       state.isLoading = false;
       state.tags = action.payload;
     },
+    tagsFailed(state) {
+      state.isLoading = false;
+    },
   },
 });
 
-export const { tagsRequested, tagsReceived } = tagsSlice.actions;
+export const { tagsRequested, tagsReceived, tagsFailed } =
+  tagsSlice.actions;
 
 export const tagsSelector = (state) => state.tags;
 

@@ -1,15 +1,21 @@
 import {
   companiesRequested,
   companiesReceived,
+  companiesFailed,
 } from './slices/companiesSlices';
 
 import {
   productsRequested,
   productsReceived,
   initFilters,
+  productsFailed,
 } from './slices/productSlices';
 
-import { tagsRequested, tagsReceived } from './slices/tagsSlices';
+import {
+  tagsRequested,
+  tagsReceived,
+  tagsFailed,
+} from './slices/tagsSlices';
 import {
   all,
   put,
@@ -20,10 +26,18 @@ import {
 import companiesAPI from 'services/companiesAPI';
 import tagsAPI from 'services/tagsAPI';
 import productsAPI from 'services/productAPI';
+import { toast } from 'react-toastify';
 
-// function* watchGetAllEnvironments() {
-//   yield takeEvery(getAll().type, getAllEnvironments);
-// }
+function safeSaga(func, onError) {
+  return function* () {
+    try {
+      yield* func();
+    } catch (error) {
+      yield put(onError());
+      toast.error(error.message || 'An error occurred');
+    }
+  };
+}
 
 function* fetchProducts() {
   yield put(productsRequested());
@@ -36,7 +50,10 @@ function* fetchProducts() {
 }
 
 function* watchInitFilters() {
-  yield takeEvery(initFilters().type, fetchProducts);
+  yield takeEvery(
+    initFilters().type,
+    safeSaga(fetchProducts, productsFailed),
+  );
 }
 
 function* fetchCompanies() {
@@ -45,7 +62,10 @@ function* fetchCompanies() {
 }
 
 function* watchFetchCompanies() {
-  yield takeEvery(companiesRequested().type, fetchCompanies);
+  yield takeEvery(
+    companiesRequested().type,
+    safeSaga(fetchCompanies, companiesFailed),
+  );
 }
 
 function* fetchTags() {
@@ -54,7 +74,10 @@ function* fetchTags() {
 }
 
 function* watchFetchTags() {
-  yield takeEvery(tagsRequested().type, fetchTags);
+  yield takeEvery(
+    tagsRequested().type,
+    safeSaga(fetchTags, tagsFailed),
+  );
 }
 
 export default function* rootSagas() {

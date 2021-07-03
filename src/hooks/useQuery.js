@@ -6,12 +6,12 @@ function useQuery() {
     ignoreQueryPrefix: true,
   });
 
-  function setQuery(name, value) {
+  function setQuery(newStringObject) {
     history.push({
       search: qs.stringify(
         {
           ...query,
-          [name]: value,
+          ...newStringObject,
         },
         { arrayFormat: 'brackets', encode: false },
       ),

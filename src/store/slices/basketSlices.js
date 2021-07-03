@@ -1,32 +1,55 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, createSelector } from '@reduxjs/toolkit';
 
 export const basketSlice = createSlice({
   name: 'basket',
   initialState: {
-    products: [],
+    items: [],
   },
   reducers: {
     addProduct: (state, action) => {
-      state.products.push(action.payload);
+      var product = state.items.find((item) =>
+        item.slug.includes(action.payload.slug),
+      );
+      if (product) {
+        state.items = state.items.map((item) => {
+          if (item.slug.includes(action.payload.slug)) {
+            item.quantity += 1;
+          }
+          return item;
+        });
+      } else {
+        state.items.push({ ...action.payload, quantity: 1 });
+      }
     },
     removeProduct: (state, { id }) => {
-      const filteredProducts = state.products.filter(
+      const filteredProducts = state.items.filter(
         (product) => product.id !== id,
       );
 
-      state.products = filteredProducts;
+      state.items = filteredProducts;
     },
-    increaseQuantity: (state, { id }) => {
-      const productIndex = state.products.findIndex(
-        (product) => product.id === id,
+    increaseQuantity: (state, action) => {
+      const slug = action.payload;
+      const productIndex = state.items.findIndex(
+        (product) => product.slug === slug,
       );
-      state.products[productIndex].quantity += 1;
+      if (productIndex > -1) {
+        state.items[productIndex].quantity += 1;
+      }
     },
-    decreaseQuantity: (state, { id }) => {
-      const productIndex = state.products.findIndex(
-        (product) => product.id === id,
+    decreaseQuantity: (state, action) => {
+      const slug = action.payload;
+      const productIndex = state.items.findIndex(
+        (product) => product.slug === slug,
       );
-      state.products[productIndex].quantity -= 1;
+      if (productIndex > -1) {
+        if (state.items[productIndex].quantity > 1) {
+          state.items[productIndex].quantity -= 1;
+        } else {
+          console.log('else girdi');
+          state.items.splice(productIndex, 1);
+        }
+      }
     },
     // decrement: (state) => {
     //   state.value -= 1;
@@ -38,6 +61,22 @@ export const basketSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { addProduct } = basketSlice.actions;
+export const {
+  addProduct,
+  removeProduct,
+  increaseQuantity,
+  decreaseQuantity,
+} = basketSlice.actions;
+
+export const productsSelector = (state) => state.basket.items;
+
+export const getTotalAmount = createSelector(
+  productsSelector,
+  (items) =>
+    items.reduce(
+      (subTotal, item) => item.price * item.quantity + subTotal,
+      0,
+    ),
+);
 
 export default basketSlice.reducer;

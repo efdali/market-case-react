@@ -30,7 +30,7 @@ export default function HomePage() {
     let itemType = query.itemType || 'mug';
     dispatch(initFilters({ page, sort, brands, tags, itemType }));
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [query]);
+  }, [window.location.search]);
 
   return (
     <Wrapper as={'main'}>

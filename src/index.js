@@ -7,6 +7,8 @@ import store from 'store/store';
 import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
+  @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
   :root{
 
     --container-width:1230px;
@@ -36,6 +38,7 @@ const GlobalStyle = createGlobalStyle`
   html,body{
     width:100%;
     min-height:100%;
+    font-family: 'Open Sans', sans-serif;
   }
 
   body{

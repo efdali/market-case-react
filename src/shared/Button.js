@@ -5,7 +5,6 @@ const Button = styled.button`
   border-radius: var(--radii-sm);
   width: 100%;
   padding: 1px 0;
-  font-family: 'Open Sans', sans-serif;
   font-weight: 600;
   font-size: 12px;
   line-height: 20px;

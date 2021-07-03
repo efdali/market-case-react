@@ -101,7 +101,6 @@ const PriceFrame = styled(Frame)`
   margin-left: auto;
   margin-top: 16px;
   padding: 2px;
-  font-family: 'Open Sans', sans-serif;
   font-weight: 600;
   font-size: 14px;
   line-height: 16px;
@@ -129,7 +128,6 @@ const QuantityButton = styled.button`
 
 const ProductItemContainer = styled(Flex)`
   justify-content: space-between;
-  font-family: 'Open Sans', sans-serif;
   font-size: 14px;
   padding: 16px 2px 16px;
   border-bottom: 1px solid #f4f4f4;
@@ -247,13 +245,17 @@ const PageTitle = styled.h4`
 
 const ProductListContainer = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  grid-template-columns: repeat(4, minmax(110px, 1fr));
   grid-column-gap: 24px;
   grid-row-gap: 20px;
   background: var(--color-white);
   box-shadow: 0px 4px 24px rgba(93, 62, 188, 0.04);
   border-radius: var(--radii-sm);
   padding: 20px;
+
+  @media screen and (max-width: 1146px) {
+    grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  }
 `;
 
 const ProductImageWrapper = styled.div`
@@ -278,7 +280,6 @@ const ProductImage = styled.img`
 `;
 
 const ProductName = styled.h3`
-  font-family: 'Open Sans', sans-serif;
   font-weight: 600;
   font-size: 14px;
   line-height: 20px;
@@ -287,7 +288,7 @@ const ProductName = styled.h3`
 `;
 
 const ProductPrice = styled.span`
-  font-family: Helvetica, sans-serif;
+  font-family: 'Helvetica', 'Arial', sans-serif;
   font-size: 14px;
   line-height: 20px;
   color: var(--color-primary);

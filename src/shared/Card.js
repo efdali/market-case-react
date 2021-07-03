@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 const Title = styled.div`
-  font-family: 'Open Sans', sans-serif;
   font-style: normal;
   font-weight: 600;
   font-size: 13px;

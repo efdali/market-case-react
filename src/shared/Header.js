@@ -57,7 +57,6 @@ const Basket = styled.a`
 `;
 
 const Label = styled.span`
-  font-family: 'Open Sans', sans-serif;
   font-weight: 600;
   font-size: 14px;
   line-height: 18px;

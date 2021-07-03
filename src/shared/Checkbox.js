@@ -3,7 +3,6 @@ import styled, { css } from 'styled-components';
 import Flex from './Flex';
 
 const Label = styled(Flex)`
-  font-family: 'Open Sans', sans-serif;
   font-size: 14px;
   line-height: 18px;
   letter-spacing: 0.16px;
@@ -25,7 +24,7 @@ const CheckboxInput = styled.input.attrs((props) => ({
   type: props.radio ? 'radio' : 'checkbox',
 }))`
   appearance: none;
-  width: 22px;
+  min-width: 22px;
   height: 22px;
   margin-right: 12px;
   position: relative;

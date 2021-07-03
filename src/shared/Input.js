@@ -8,7 +8,7 @@ const Input = styled.input.attrs((props) => ({
   border-radius: var(--radii-sm);
   width: 100%;
   padding: 12px 16px;
-  font-family: Inter;
+  font-family: 'Inter', sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 14px;

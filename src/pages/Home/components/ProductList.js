@@ -42,8 +42,9 @@ function ProductList() {
         >
           <ProductImageWrapper>
             <ProductImage
-              src="https://cdn.getir.com/product/6045d299a3b1ab82e4d1cccf_tr_1616163593619.jpeg"
-              alt=""
+              src="http://cdn.getir.com/product/5fd70d8702db165db82ffa9a_tr_1608290170079.jpeg"
+              alt={product.slug}
+              loading="lazy"
             />
           </ProductImageWrapper>
           <ProductPrice>₺ {product.price}</ProductPrice>
